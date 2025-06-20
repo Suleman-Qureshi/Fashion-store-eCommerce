@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import "tailwindcss";
+
+
+.heading-font {
+  font-family: "Quicksand", sans-serif;
+}
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Quicksand', sans-serif;
+}
+.heading-font{
+  font-family: 'Quicksand', sans-serif;
+}
+.primary-color{
+  color: #DDEB9D;
+}
+.secondary-color{
+  color: #A0C878;
+}
+.tertiary-color{
+  color: #143D60;
+}
+.quaternary-color{
+  color: #EB5B00;
+}
+.primary-border{
+  border-color: #DDEB9D;
+}
+.secondary-border{
+  border-color: #A0C878;
+}
+.tertiary-border{
+  border-color: #143D60;
+}
+.quaternary-border{
+  border-color: #EB5B00;
+}
+.primary-bg{
+  background: #DDEB9D;
+}
+.secondary-bg{
+  background: #A0C878;
+}
+.tertiary-bg{
+  background: #143D60;
+}
+.quaternary-bg{
+  background: #EB5B00;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.white-bg{
+  background-color: white;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;}

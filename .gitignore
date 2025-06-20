@@ -1,0 +1,56 @@
+# === FRONTEND (Next.js: /Client) ===
+
+Client/node_modules/
+Client/.pnp
+Client/.pnp.*
+Client/.yarn/*
+!Client/.yarn/patches
+!Client/.yarn/plugins
+!Client/.yarn/releases
+!Client/.yarn/versions
+
+Client/coverage/
+Client/.next/
+Client/out/
+Client/build/
+
+Client/.DS_Store
+Client/*.pem
+
+Client/npm-debug.log*
+Client/yarn-debug.log*
+Client/yarn-error.log*
+Client/.pnpm-debug.log*
+
+Client/.env*
+Client/.vercel/
+Client/*.tsbuildinfo
+Client/next-env.d.ts
+
+# === BACKEND (Express/Node: /Server) ===
+
+Server/node_modules/
+Server/build/
+Server/dist/
+
+Server/.DS_Store
+Server/*.pem
+
+Server/npm-debug.log*
+Server/yarn-debug.log*
+Server/yarn-error.log*
+Server/.pnpm-debug.log*
+
+Server/.env*
+
+# === Global ignores (in case root files exist) ===
+
+node_modules/
+.DS_Store
+.env*
+*.log
+*.tsbuildinfo
+*.pem
+
+# === Ignore Git conflict files ===
+*.orig
