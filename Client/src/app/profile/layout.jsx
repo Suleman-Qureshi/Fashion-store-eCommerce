@@ -15,13 +15,19 @@ import Footer from "../Components/Footer";
 import axios from "axios";
 import { signOut } from 'next-auth/react'
 import Image from "next/image";
+import { FUNCTIONS_CONFIG_MANIFEST } from "next/dist/shared/lib/constants";
 export default function ProfileLayout({ children}) {
   const pathname=usePathname()
   const [userName,setUserName]=React.useState("user")
   const [avatarUrl, setAvatarUrl]=React.useState(null);
-  const userId = localStorage.getItem("userId");
+  const [userId, setUserId] = React.useState(null);
+  // const userId = localStorage.getItem("userId");
 React.useEffect(()=>{
   const fetchUsername=async ()=>{
+    if (typeof window !== 'undefined') {
+    const id = localStorage.getItem('userId');
+    if (id) setUserId(id);
+  }
     if(!userId)return;
     try{
       const response=await axios.get(`http://localhost:5000/api/user/${userId}`);

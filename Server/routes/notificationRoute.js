@@ -6,7 +6,6 @@ router.post('/', async (req, res) => {
   try {
     const newNotification = await Notification.create({ userId, message, type });
     res.status(201).json(newNotification);
-    alert("you have new notification")
   } catch (error) {
     res.status(500).json({ error: "Failed to create notification" });
   }

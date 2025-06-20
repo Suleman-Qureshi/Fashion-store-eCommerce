@@ -8,6 +8,10 @@ import { SlLocationPin } from "react-icons/sl";
 import { FiPhone } from "react-icons/fi";
 import { HiOutlineEnvelope } from "react-icons/hi2";
 import { useForm } from "react-hook-form";
+import dynamic from "next/dynamic";
+const ClientMap = dynamic(() => import("../Components/ClientMap"), {
+  ssr: false
+});
 import axios from "axios"
 function Page() {
   const {
@@ -33,19 +37,7 @@ function Page() {
       <Header />
       <main>
         <section className="w-screen py-20">
-          <MapContainer
-            center={[33.6844, 73.0479]}
-            zoom={13}
-            style={{ height: "400px", width: "100%" }}
-          >
-            <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution="&copy; OpenStreetMap contributors"
-            />
-            {/* <Marker position={[33.6844, 73.0479]}>
-              <Popup>We are here!</Popup>
-            </Marker> */}
-          </MapContainer>
+          <ClientMap />
         </section>
         <section className="w-screen flex justify-center">
           <div className="w-[67rem] flex ">
