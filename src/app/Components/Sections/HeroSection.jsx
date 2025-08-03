@@ -571,7 +571,7 @@ function HeroSection() {
     <>
       <section className="w-screen px-20 py-8 flex">
         <div className="w-full flex justify-center">
-          <div className="flex flex-col h-auto gap-4 w-[67rem] items-center">
+          <div className="flex flex-col h-auto gap-4 w-[68rem] items-center">
             <Swiper
               modules={[EffectCube, Autoplay, EffectFade, Navigation]}
               spaceBetween={0}
@@ -699,11 +699,11 @@ function HeroSection() {
                           </div>
                         )) ||
                         (index == 2 && (
-                          <div className="flex gap-4 flex-wrap">
+                          <div className="grid grid-cols-2 grid-rows-2 gap-4">
                             {item.card.map((cardItem) => (
                               <Card
                                 key={cardItem.id}
-                                sx={{ width: 270, maxHeight: 280 }}
+                                sx={{ width: 250, maxHeight: 280 }}
                                 className="p-2"
                               >
                                 <CardActionArea>
@@ -732,6 +732,7 @@ function HeroSection() {
                                 </CardActionArea>
                               </Card>
                             ))}
+                            
                           </div>
                         ))}
                     </div>
