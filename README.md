@@ -35,3 +35,23 @@ Live Demo <!-- https://fashion-store-e-commerce-liard.vercel.app/ ->
   <li>*APIs:* RESTful APIs</li>
   <li>*Other:* Context API, Shadcn, Parallel Routing</li>
 </ul>
+
+### *Getting Started*
+#### *Prerequisites*
+<ul>
+  <li>Node.js</li>
+  <li>npm</li>
+</ul>
+
+## Installation
+
+<ol type="number">
+  <li>Clone the repository </li>
+</ol>
+
+
+
+
+
+
+
