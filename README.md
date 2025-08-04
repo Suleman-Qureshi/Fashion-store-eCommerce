@@ -7,3 +7,8 @@ FashionStore is a modern, responsive e-commerce web application designed for onl
 <img width="1906" height="922" alt="image" src="https://github.com/user-attachments/assets/c485b613-fc6d-4705-bd05-7f213b40a743"  />
 </a>
 
+### **Features**
+
+<ul>
+<li>🛒 Modern UI/UX: Clean, responsive, and user-friendly interface.</li>
+</ul>
