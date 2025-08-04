@@ -1,6 +1,7 @@
 # **FashionStore**
 
-A modern, responsive e-commerce web application for fashion products.
-Easily browse, search, and shop for the latest trends with a user-friendly interface.
+FashionStore is a modern, responsive e-commerce web application designed for online fashion retailers. It offers a seamless shopping experience with features like product search, detailed product pages, shopping cart, wishlist, multi-language and multi-currency support, and more.
+<a href="https://fashion-store-e-commerce-liard.vercel.app/" target="_blank">
+<img width="1906" height="922" alt="image" src="https://github.com/user-attachments/assets/c485b613-fc6d-4705-bd05-7f213b40a743"  />
+</a>
 
-<img width="1904" height="921" alt="image" src="https://github.com/user-attachments/assets/ce039355-c880-49b6-989c-fbaa66dce12b" />
