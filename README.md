@@ -24,3 +24,14 @@ FashionStore is a modern, responsive e-commerce web application designed for onl
 
 ### **DEMO**
 Live Demo <!-- https://fashion-store-e-commerce-liard.vercel.app/ ->
+
+### **Tech Stack**
+
+<ul>
+  <li>*Frontend:* Next.js</li>
+  <li>*Styling:* CSS3, Bootstrap, Tailwind CSS</li>
+  <li>*BackEnd:* Express.js, Page Routing in Next.js</li>
+  <li>*Database:* MongoDB</li>
+  <li>*APIs:* RESTful APIs</li>
+  <li>*Other:* Context API, Shadcn, Parallel Routing</li>
+</ul>
