@@ -49,6 +49,10 @@ Live Demo <!-- https://fashion-store-e-commerce-liard.vercel.app/ ->
   <li>Clone the repository </li>
 </ol>
 
+```bash
+git clone http://github.com/yousername/fashionstore.git
+cd fashionstore
+
 
 
 
