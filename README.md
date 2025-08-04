@@ -43,19 +43,34 @@ Live Demo <!-- https://fashion-store-e-commerce-liard.vercel.app/ ->
   <li>npm</li>
 </ul>
 
-## Installation
+### Installation
 
 <ol type="number">
   <li>Clone the repository </li>
-</ol>
+
 
 ```bash
 git clone http://github.com/yousername/fashionstore.git
 cd fashionstore
+```
+<li>Install dependencies</li>
 
+```bash
+npm install
+#or
+yarn install
+```
+<li>Start the development server</li>
 
+```bash
+npm start 
+# or
+yarn start
+```
+<li>Open in browser</li>
 
-
-
-
+```bash
+http://localhost:3000
+```
+</ol>
 
