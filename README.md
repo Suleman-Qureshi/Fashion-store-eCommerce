@@ -11,4 +11,16 @@ FashionStore is a modern, responsive e-commerce web application designed for onl
 
 <ul>
 <li>🛒 Modern UI/UX: Clean, responsive, and user-friendly interface.</li>
+<li>🔍 Product Search: Search bar for quick product lookup.</li>
+<li>🏷️ Category Navigation: Easy navigation through categories and mega menus.</li>
+<li>🛍️ Product Details: Detailed product pages with images, descriptions, and pricing.</li>
+<li>🛒 Cart & Wishlist: Add products to cart or wishlist for later.</li>
+<li>🌐 Multi-language & Currency: Supports multiple languages and currencies.</li>
+<li>👤 User Account: Account management for users.</li>
+<li>📦 Order Tracking: Track order status.</li>
+<li>📧 Contact & Support: Customer support and contact options.</li>
+<li>📱 Responsive Design: Works on desktop, tablet, and mobile devices.</li>
 </ul>
+
+### **DEMO**
+Live Demo <!-- https://fashion-store-e-commerce-liard.vercel.app/ ->
