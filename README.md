@@ -73,4 +73,23 @@ yarn start
 http://localhost:3000
 ```
 </ol>
+## **Folder Structure**
 
+```bash
+fashionstore/
+├── public/
+│ └── images/
+├── src/
+│ ├── components/
+│ ├── pages/
+│ ├── assets/
+│ ├── styles/
+│ └── App.js
+├── package.json
+└── README.md
+```
+## **Contact**
+<ul>
+  <li>*Email:* demn729999@gmail.com</li>
+  <li>*Project Link:* https://fashion-store-e-commerce-liard.vercel.app/</li>
+</ul>
