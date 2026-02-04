@@ -18,7 +18,7 @@ function Page() {
         {wishlist.length === 0 ? (
         <p className="text-gray-500">Your wishlist is empty</p>
       ) : (
-        <div className="w-full flex flex-wrap gap-8 justify-start items-start">
+        <div className="w-full flex flex-wrap gap-8 justify-start items-start max-md:justify-center">
           {wishlist.map((contentItem) => (
             <div
               key={contentItem.itemNo}

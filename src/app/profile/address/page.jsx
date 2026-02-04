@@ -105,7 +105,7 @@ function Page() {
         {addressData.map((address) => (
           <div
             key={address._id}
-            className="w-3/7 h-[342px] justify-between flex gap-8 p-4 shadow-md flex-col"
+            className="w-3/7 max-sm:w-full h-[342px] justify-between flex gap-8 p-4 shadow-md flex-col"
           >
             <div className="w-full flex items-center justify-between">
               <h4 className="text-xl font-medium quaternary-color">Home Address</h4>

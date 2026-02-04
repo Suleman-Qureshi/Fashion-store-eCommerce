@@ -115,7 +115,6 @@ function Page() {
         </div>
       </div>
       )}
-
     </section>
   )
 }

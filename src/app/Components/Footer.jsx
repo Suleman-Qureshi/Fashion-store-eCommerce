@@ -39,8 +39,8 @@ function Footer() {
   };
   return (
     <footer>
-      <div className=" w-screen border-b border-gray-500 flex justify-center items-center">
-        <div className="w-[67rem] py-10 flex gap-8 justify-between items-start">
+      <div className=" w-screen border-b border-gray-500 max-md:px-4 flex justify-center items-center">
+        <div className="w-[67rem] py-10 flex gap-8 max-md:flex-col justify-between items-start">
           <div className="flex flex-col gap-8">
             <h5 className="text-4xl font-semibold secondary-color heading-font">
               FashionStore

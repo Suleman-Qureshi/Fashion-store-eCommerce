@@ -114,11 +114,11 @@ function Page() {
     <>
       <Header />
       <main>
-        <section className="w-screen flex justify-center items-center">
-          <div className="w-[67rem] flex items-center py-10 gap-8">
+        <section className="w-screen flex justify-center items-center max-md:px-4">
+          <div className="w-[67rem] flex max-md:flex-col items-center py-10 gap-8">
             <div className="w-full flex flex-col gap-8">
               <h1 className="text-3xl font-semibold tertiary-color ">About</h1>
-              <div className="flex flex-col gap-4 border-r-2 border-[#EB5B00]">
+              <div className="flex flex-col gap-4 border-r-2 max-md:border-r-0 border-[#EB5B00]">
                 <span className="quaternary-color font-semibold text-lg">
                   ABOUT OUR COMPANY
                 </span>
@@ -136,7 +136,7 @@ function Page() {
           </div>
         </section>
         <section className="w-screen flex flex-col justify-center items-center py-10">
-          <div className="w-[67rem] flex gap-1 items-center justify-between flex-wrap">
+          <div className="w-[67rem] max-md:w-full flex gap-1 items-center justify-between max-md:flex-col max-md:items-center flex-wrap">
             {card1.map((item, index) => (
               <div key={index} className="flex flex-col gap-4 w-[21rem] group">
                 <div className="w-full overflow-hidden rounded-xl">
@@ -187,7 +187,7 @@ function Page() {
           </div>
         </div>
         <section className="w-screen flex justify-center py-10">
-          <div className="w-[67rem] ">
+          <div className="w-[67rem] max-md:h-full max-md:w-full">
             <Swiper
               modules={[Autoplay, Navigation]}
               spaceBetween={0}
@@ -207,14 +207,14 @@ function Page() {
             >
               {sliderContent.map((item, index) => (
                 <SwiperSlide key={index} className=" rounded-lg h-full p-4">
-                  <div className="w-full h-full flex gap-4">
-                    <div className="flex flex-col gap-8 w-3/5">
+                  <div className="w-full h-full flex max-md:flex-col-reverse max-md:items-center max-md:text-center gap-4">
+                    <div className="flex flex-col max-md:flex-col-reverse gap-8 w-3/5">
                       <h5 className="text-3xl font-medium quaternary-color">
                         {item.heading}
                       </h5>
                       <p className="tertiary-color italic">{item.para1}</p>
                       <p className="tertiary-color italic">{item.para2}</p>
-                      <div className="flex gap-2 items-center">
+                      <div className="flex gap-2 items-center max-md:justify-center">
                         <div className="rounded-full w-16 h-16 overflow-hidden">
                           <Image
                             src={item.dp}

@@ -573,14 +573,12 @@ function HeroSection() {
         <div className="w-full flex justify-center">
           <div className="flex flex-col h-auto gap-4 w-[68rem] items-center">
             <Swiper
-              modules={[EffectCube, Autoplay, EffectFade, Navigation]}
+              // modules={[EffectCube, Autoplay, EffectFade, Navigation]}
               spaceBetween={0}
               slidesPerView={1}
               loop={true}
-              // onSlideChange={() => console.log("slide change")}
-              // onSwiper={(swiper) => console.log(swiper)}
               scrollbar={{ draggable: true }}
-              autoplay={{ delay: 3000 }}
+              // autoplay={{ delay: 3000 }}
               effect={"fade"}
               speed={1000}
               className="w-full h-full relative"
@@ -595,22 +593,22 @@ function HeroSection() {
                   key={item.id}
                   className="bg-white tertiary-bg p-4 rounded-md"
                 >
-                  <div className="w-full h-full flex gap-8 items-center">
-                    <div className="w-[65rem] h-full flex flex-col gap-8">
+                  <div className="w-full h-full flex max-md:flex-col gap-8 items-center">
+                    <div className="w-[65rem] h-full flex flex-col max-md:items-center gap-8">
                       <span className="bg-[#eb5a008e] secondary-color w-40 text-center py-2 font-semibold text-sm rounded-full">
                         {item.tag}
                       </span>
                       {(index == 0 && (
-                        <h2 className="text-6xl font-semibold primary-color heading-font">
+                        <h2 className="text-6xl font-semibold primary-color heading-font max-md:text-center">
                           Discover Our{" "}
-                          <div className="quaternary-color relative before:absolute before:w-44 before:h-2 before:rounded-full before:bg-[#eb5a008e] before:bottom-1 before:left-1">
+                          <div className="quaternary-color relative before:absolute before:w-44 before:h-2 before:rounded-full before:bg-[#eb5a008e] before:bottom-1 before:left-1 max-md:before:left-1/2 max-md:before:-translate-x-1/2">
                             Latest
                           </div>{" "}
                           Collection
                         </h2>
                       )) ||
                         (index == 1 && (
-                          <h2 className="text-6xl font-semibold primary-color heading-font">
+                          <h2 className="text-6xl font-semibold primary-color heading-font max-md:flex max-md:flex-col max-md:items-center">
                             Season{" "}
                             <span className="quaternary-color">Sale</span> Upto
                             50&#x25; Off
@@ -618,31 +616,31 @@ function HeroSection() {
                         )) ||
                         (index == 2 && (
                           <h2 className="text-6xl font-semibold primary-color ">
-                            <span className="text-6xl font-semibold primary-color heading-font">
+                            <span className="text-6xl font-semibold primary-color heading-font max-md:text-center max-md:flex max-md:flex-col">
                               Premimum{" "}
                               <span className="quaternary-color">Quality </span>
                               Product
                             </span>
                           </h2>
                         ))}
-                      <p className="text-white text-lg">{item.para}</p>
+                      <p className="text-white text-lg max-md:w-1/2 max-md:text-center">{item.para}</p>
                       <Link href={item.href}>
                         <button className="flex gap-2 items-center cursor-pointer quaternary-bg tertiary-color w-44 justify-center text-center py-2 font-semibold text-sm rounded-lg">
                           {item.btnText} <FaArrowRightLong />
                         </button>
                       </Link>
                       {index == 1 && (
-                        <div className="w-full">
+                        <div className="w-full max-md:flex max-md:justify-center max-md:text-center">
                           <CountdownTimer />
                         </div>
                       )}
                     </div>
-                    <div className="w-full h-full flex flex-col gap-8">
+                    <div className="w-full h-full max-md:items-center flex flex-col gap-8">
                       {(index == 0 && (
-                        <div className="w-[30rem] relative">
-                          <span className="absolute w-36 py-2 text-center flex item-center justify-center gap-2 quaternary-bg rounded-full tertiary-color heading-font">
+                        <div className="w-[30rem] relative max-md:flex max-md:flex-col max-md:items-center">
+                          <span className="absolute w-36 py-2 text-center flex item-center justify-center gap-2 quaternary-bg rounded-full tertiary-color heading-font max-md:-translate-y-8">
                             <TiStarFullOutline className="text-2xl translate-y-0.5" />
-                            <span className="text-xl font-medium">
+                            <span className="text-xl font-medium ">
                               Featured
                             </span>
                           </span>
@@ -699,7 +697,7 @@ function HeroSection() {
                           </div>
                         )) ||
                         (index == 2 && (
-                          <div className="grid grid-cols-2 grid-rows-2 gap-4">
+                          <div className="grid grid-cols-2 grid-rows-2 max-sm:grid-cols-1 gap-4">
                             {item.card.map((cardItem) => (
                               <Card
                                 key={cardItem.id}
@@ -752,7 +750,7 @@ function HeroSection() {
         </div>
       </section>
       <section className="w-screen px-20 py-20 flex justify-center">
-        <div className="flex gap-8 mx-auto">
+        <div className="flex gap-8 mx-auto max-md:flex-wrap max-md:justify-center">
           {cardsContent.map((card, index) => (
             <div
               key={index}
@@ -803,7 +801,7 @@ function HeroSection() {
             item.isactive ? (
               <div
                 key={item.id}
-                className="flex gap-4 justify-between w-full items-center"
+                className="flex gap-4 justify-between max-md:flex-col w-full items-center"
               >
                 {item.content.map((contentItem, index) => (
                   <div
@@ -831,7 +829,7 @@ function HeroSection() {
         </div>
       </section>
       <section className="w-screen flex flex-col items-center justify-center gap-8 py-10">
-        <div className="flex flex-col gap-4 text-center">
+        <div className="flex flex-col gap-4 text-center max-md:flex-wrap">
           <h2 className="text-2xl font-semibold quaternary-color">
             Best Sellers
           </h2>
@@ -840,7 +838,7 @@ function HeroSection() {
             consectetur velit
           </p>
         </div>
-        <div className="w-[67rem] flex gap-8 justify-between flex-wrap">
+        <div className="w-[67rem] h-auto flex gap-8 justify-between max-md:flex-col flex-wrap max-md:items-center">
           {cartContent.map((item, index) => (
             <div
               key={index}
@@ -953,10 +951,9 @@ function HeroSection() {
                             </span>
                           </Link>
                           <span className="flex gap-1 item-center justify-center">
-                            {wishedSet.has(contentItem.itemNo)?
-                            <FaHeart className="w-8 h-8 bg-white p-1 rounded-full text-[#EB5B00] hover:bg-[#EB5B00] duration-200 hover:text-white cursor-pointer hover:-translate-y-1" onClick={() => {toggleWishlist(contentItem);}} />
-                            :<CiHeart className="w-8 h-8 bg-white p-1 rounded-full text-[#143D60] hover:bg-[#EB5B00] duration-200 hover:text-white cursor-pointer hover:-translate-y-1" onClick={() => {toggleWishlist(contentItem);}} />
-                          }
+                          {wishedSet.has(contentItem.itemNo)?
+                          <FaHeart className="w-8 h-8 bg-white p-1 rounded-full text-[#EB5B00] hover:bg-[#EB5B00] duration-200 hover:text-white cursor-pointer hover:-translate-y-1" onClick={() => {toggleWishlist(contentItem);}} />
+                          :<CiHeart className="w-8 h-8 bg-white p-1 rounded-full text-[#143D60] hover:bg-[#EB5B00] duration-200 hover:text-white cursor-pointer hover:-translate-y-1" onClick={() => {toggleWishlist(contentItem);}} />}
                             <IoEyeOutline className="w-8 h-8 bg-white p-1 rounded-full text-[#143D60] hover:bg-[#EB5B00] duration-200 hover:text-white cursor-pointer hover:-translate-y-1"  />
                             <GoArrowSwitch className="w-8 h-8 bg-white p-1 rounded-full text-[#143D60] hover:bg-[#EB5B00] duration-200 hover:text-white cursor-pointer hover:-translate-y-1" />
                           </span>
@@ -995,9 +992,7 @@ function HeroSection() {
                         </span>
                       </div>
                     </div>
-                  )
-              )
-            )}
+                  )))}
           </div>
           <Link href="/">
             <button className="flex gap-2 items-center quaternary-bg primary-color justify-center text-lg font-medium rounded-full py-1 px-6 group cursor-pointer">

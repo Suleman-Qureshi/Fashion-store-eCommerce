@@ -8,10 +8,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../../components/ui/accordion"
-
 function UserOrder({ userId }) {
   const [orders, setOrders] = React.useState([]);
-
   React.useEffect(() => {
     axios.get(`/api/order/myorder/${userId}`)
       .then((res) => {
@@ -21,7 +19,6 @@ function UserOrder({ userId }) {
         console.error("💥 Failed to fetch orders:", err);
       });
   }, [userId]);
-
   const formatStatus = (status) => {
     const s = status.toLowerCase();
     if (s.includes('delivered')) return 'Delivered';
@@ -30,7 +27,6 @@ function UserOrder({ userId }) {
     if (s.includes('shipped')) return 'Shipped';
     return status;
   };
-
   const getStatusColor = (status) => {
     const s = status.toLowerCase();
     if (s.includes('delivered')) return 'text-green-600';
@@ -38,22 +34,16 @@ function UserOrder({ userId }) {
     if (s.includes('processing') || s.includes('pending')) return 'text-yellow-500';
     return 'text-gray-600';
   };
-
   return (
-    <div className="w-full mx-auto p-4">
+    <div className="w-full mx-auto p-4 max-sm:px-2 max-lg:p-2">
       <h2 className="text-2xl font-semibold mb-6">Your Orders</h2>
-
       {orders.length === 0 && (
         <p className="text-center text-gray-500">No orders found for this user.</p>
       )}
-
       <Accordion type="single" collapsible className="space-y-4">
         {orders.map((order, index) => (
           <AccordionItem key={index} value={`item-${index}`} className=" rounded-lg bg-white p-4">
-            
             {/* Accordion Header */}
-            
-              
               <div className="flex flex-wrap items-center justify-between w-full text-sm text-gray-700">
                 <div className="font-medium truncate">Order #{order._id.slice(-6)}</div>
                 <div>{new Date(order.createdAt).toLocaleDateString()}</div>
@@ -87,13 +77,11 @@ function UserOrder({ userId }) {
                 <AccordionTrigger className="flex flex-col gap-3 w-full text-left">
             </AccordionTrigger>
               </div>
-
 <hr className='opacity-30 mt-2' />
             {/* Accordion Content */}
           <AccordionContent className="text-sm text-gray-700 pt-4 border-t">
   <div>
     <h3 className="text-lg font-semibold mb-4">Order Details</h3>
-
     {/* Order Meta */}
     <div className="flex flex-wrap gap-4 text-sm mb-4">
       <div>
@@ -105,7 +93,6 @@ function UserOrder({ userId }) {
         Credit Card (**** 4589)
       </div>
     </div>
-
     {/* Product List */}
     <div className="space-y-4 divide-y">
       {order.orderItems.map((item, i) => (
@@ -126,14 +113,12 @@ function UserOrder({ userId }) {
               </div>
             </div>
           </div>
-
           <div className="text-right font-semibold">
             ${item.price.toFixed(2)}
           </div>
         </div>
       ))}
     </div>
-
     {/* 👉 Cost Summary Section */}
     <div className="bg-gray-50 p-4 mt-6 rounded-lg space-y-2 text-sm">
       <div className="flex justify-between">
@@ -153,7 +138,6 @@ function UserOrder({ userId }) {
         <span>${(order.totalPrice+10).toFixed(2)}</span>
       </div>
     </div>
-
     {/* 👉 Shipping Info */}
     <div className="mt-6 flex flex-col gap-6 md:flex-row text-sm text-gray-700">
       <div>
@@ -172,12 +156,10 @@ function UserOrder({ userId }) {
     </div>
   </div>
 </AccordionContent>
-
           </AccordionItem>
         ))}
       </Accordion>
     </div>
   );
 }
-
 export default UserOrder;

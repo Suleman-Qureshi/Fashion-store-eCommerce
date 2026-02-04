@@ -14,6 +14,8 @@ import { Button } from "../../components/ui/button"
 import { FaRegUserCircle } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
 import { signOut } from 'next-auth/react'
+import { HiBars3 } from "react-icons/hi2";
+import { RxCross2 } from "react-icons/rx";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -32,6 +34,8 @@ import Image from "next/image";
 import { CiHeart } from "react-icons/ci";
 function Header() {
   const [isLoggedIn,setIsLoggedIn]=useState(false)
+  const [search,setSearch]=useState(false)
+  const [mobileMenu,setMobileMenu]=useState(false)
   const pathname = usePathname();
   const [megamenu1, setMeagamenu1] = useState([
     {
@@ -375,9 +379,65 @@ function Header() {
     const token = localStorage.getItem("token");
     setIsLoggedIn(!!token);
   },[])
+
   return (
+    <>
+    <div className={`${mobileMenu?"w-screen px-20":"w-0 px-0 "} md:hidden duration-200 py-12 h-screen fixed overflow-hidden  top-0 left-0 bg-white/20 backdrop-blur-md z-50`}>
+    <div className="tertiary-color w-full pt-12 h-full  rounded-md bg-white secondary-border border-2 scroll-auto flex-col flex gap-6 p-2 relative">
+      <span className="absolute right-4 top-4 tertiary-color text-xl" onClick={()=>setMobileMenu(!mobileMenu)}><RxCross2 /></span>        
+        <Link
+          href="/"
+          className={`${pathname==="/"?"before:w-full text-[#EB5B00]":"before:w-0"} relative hover:before:w-full before:absolute before:duration-200 before:h-0.5 before:rounded-xl before:bg-[#EB5B00] before:-bottom-0.5 hover:text-[#EB5B00] duration-200`}
+        >
+          Home
+        </Link>
+        <Link
+          href="/About-us"
+          className={`${pathname==="/About-us"?"before:w-full text-[#EB5B00]":"before:w-0"} relative hover:before:w-full before:absolute before:duration-200 before:h-0.5 before:rounded-xl before:bg-[#EB5B00] before:-bottom-0.5 hover:text-[#EB5B00] duration-200`}
+        >
+          About
+        </Link>
+        <Link
+          href="/"
+          className=" relative before:absolute before:w-0 hover:before:w-full before:duration-200 before:h-0.5 before:rounded-xl before:bg-[#EB5B00] before:-bottom-0.5 hover:text-[#EB5B00] duration-200"
+        >
+          Catagory
+        </Link>
+        <Link   
+          href="/"
+          className=" relative before:absolute before:w-0 hover:before:w-full before:duration-200 before:h-0.5 before:rounded-xl before:bg-[#EB5B00] before:-bottom-0.5 hover:text-[#EB5B00] duration-200"
+        >
+          Product Details
+        </Link>
+        <Link
+          href="/"
+          className=" relative before:absolute before:w-0 hover:before:w-full before:duration-200 before:h-0.5 before:rounded-xl before:bg-[#EB5B00] before:-bottom-0.5 hover:text-[#EB5B00] duration-200"
+        >
+          Cart
+        </Link>
+        {/* this is my mega menu 1 */}
+        <DropdownMenu className="tertiary-color flex">
+          <DropdownMenuTrigger className="cursor-pointer flex items-center gap-1 relative before:absolute before:w-0 hover:before:w-full before:duration-200 before:h-0.5 before:rounded-xl before:bg-[#EB5B00] before:-bottom-0.5 hover:text-[#EB5B00] duration-200 outline-none focus:outline-none">
+            Megamenu 1 <FaCaretDown className="translate-y-0.5" />
+          </DropdownMenuTrigger>
+        </DropdownMenu>
+        {/* MegaMenu2 */}
+        <DropdownMenu className="tertiary-color">
+          <DropdownMenuTrigger className="cursor-pointer flex items-center gap-1 relative before:absolute before:w-0 hover:before:w-full before:duration-200 before:h-0.5 before:rounded-xl before:bg-[#EB5B00] before:-bottom-0.5 hover:text-[#EB5B00] duration-200 outline-none focus:outline-none">
+            Megamenu 2 <FaCaretDown className="translate-y-0.5" />
+          </DropdownMenuTrigger>
+        </DropdownMenu>
+
+        <Link
+          href="/Contact-us"
+          className={`${pathname==="/Contact-us"?"before:w-full text-[#EB5B00]":"before:w-0"} relative hover:before:w-full before:absolute before:duration-200 before:h-0.5 before:rounded-xl before:bg-[#EB5B00] before:-bottom-0.5 hover:text-[#EB5B00] duration-200`}
+        >
+          Contact
+        </Link>
+    </div>
+    </div>
     <nav className="flex items-center flex-col primary-color bg-white">
-      <div className="w-full items-center flex px-20 py-2 justify-between gap-1 text-xs tertiary-bg">
+      <div className="w-full items-center max-md:hidden flex px-20 max-lg:px-8 max-md:px-2 py-2 justify-between gap-1 text-xs tertiary-bg">
         <div className="flex gap-4 items-center w-full">
           <div className="flex gap-2 items-center">
             <FaPhoneAlt />
@@ -391,7 +451,7 @@ function Header() {
             <p className="Quaternary-color">support@example.com</p>
           </div>
         </div>
-        <div className="w-68 text-center">
+        <div className="w-68 max-lg:w-auto text-center ">
           &lt;&nbsp;&nbsp;&nbsp; FashionStore &nbsp;&nbsp;&nbsp; &gt;{" "}
         </div>
         <div className="flex items-center gap-4 Quaternary-color text-base w-full justify-end">
@@ -411,12 +471,137 @@ function Header() {
           </div>
         </div>
       </div>
-      <div className="flex items-center w-full justify-between py-4 px-20 gap-8  border-b tertiary-border">
+      <div className="flex items-center w-full justify-between py-4 px-20 max-lg:px-8 max-md:px-2 gap-8 max-md:gap-2 max-lg:gap-4  border-b tertiary-border">
         <h1 className="primary-color text-3xl font-semibold heading-font w-full">
           Fashion<span className="secondary-color">Store</span>
         </h1>
-        <div className="w-full">
+        <div className="w-full block max-md:hidden">
           <form className="w-full">
+            <label
+              htmlFor="default-search"
+              className="mb-2 text-sm font-medium text-gray-900 sr-only"
+            >
+              Search
+            </label>
+            <div className="relative w-full">
+              <div className="absolute inset-y-0 start-0 flex items-center p-3 pointer-events-none">
+                <svg
+                  className="w-4 h-4 secondary-color "
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                  />
+                </svg>
+              </div>
+              <input
+                type="search"
+                id="default-search"
+                className="block w-full p-4 ps-12 text-sm  border tertiary-color secondary-border rounded-lg primary-bg focus:border-[#EB5B00] focus:ring-[#EB5B00] focus:outline-[#EB5B00]"
+                placeholder="Search for producs..."
+                required
+              />
+              <button
+                type="submit"
+                className="text-white absolute end-2.5 bottom-2.5 secondary-bg focus:ring-4 focus:outline-none focus:ring-[#EB5B00] font-medium rounded-lg text-sm px-4 py-2 cursor-pointer hover:opacity-80 opacity-100 duration-100"
+              >
+                Search
+              </button>
+            </div>
+          </form>
+        </div>
+        <div className="flex gap-4 max-md:gap-1 items-center w-full justify-end ">
+          
+          {isLoggedIn?
+<DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button className="flex gap-1 items-center secondary-color cursor-pointer">
+          <FaRegUser />
+            <p className="block max-md:hidden">Account</p>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-64 primary-bg border-2 secondary-border tertiary-color">
+        <DropdownMenuLabel>
+          <div className="flex flex-col items-center gap-1 text-center w-full">
+            <div className="quaternary-color text-lg font-medium leading-snug">Welcome to FashionStore</div>
+            <div className="text-xs">Access account & manage order</div>
+          </div>
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator className='tertiary-bg opacity-50' />
+        <DropdownMenuGroup>
+          <DropdownMenuItem>
+            <Link href='/profile'  className='flex items-center gap-1 cursor-pointer group'>
+            <FaRegUserCircle />
+            <span className="group-hover:translate-x-1 duration-200">Profile</span>
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem className='flex items-center gap-1 cursor-pointer'>
+            <Link href='/profile/'  className='flex items-center gap-1 cursor-pointer group'>
+            <IoBagCheckOutline  />
+            <span className="hover:translate-x-1 duration-200">My Orders</span>
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem className='flex items-center gap-1 cursor-pointer'>
+            <Link href='/profile/wishlist'  className='flex items-center gap-1 cursor-pointer group'>
+            <CiHeart  />
+            <span className="hover:translate-x-1 duration-200">My Wishlist</span>
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem className='flex items-center gap-1 cursor-pointer'>
+            <IoIosReturnLeft  />
+            <span className="hover:translate-x-1 duration-200">Return & refund</span>
+          </DropdownMenuItem>
+          <DropdownMenuItem className='flex items-center gap-1 cursor-pointer'>
+            <PiGearDuotone  />
+            <span className="hover:translate-x-1 duration-200">Settings</span>
+          </DropdownMenuItem> 
+        </DropdownMenuGroup>
+                <DropdownMenuSeparator className='tertiary-bg opacity-50' />
+        <DropdownMenuItem className='flex items-center gap-1 cursor-pointer'>
+            <BiLogOut  />
+            <span className="hover:translate-x-1 duration-200" onClick={() => (localStorage.removeItem('token'),window.location.href = '/Login')} >Logout</span>
+          </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>:
+          <Link href='/Login' className="bg-[#DDEB9D] border border-[#A0C878] rounded-md text-[#143D60] text-center duration-200 hover:scale-105 hover:-translate-y-0.5 py-1.5 w-36 text-sm cursor-pointer">Login/Register</Link>
+          }
+          <button className="secondary-color items-center cursor-pointer hidden max-md:block" onClick={()=>setSearch(!search)}>
+                <svg
+                  className="w-4 h-4 secondary-color "
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                  />
+                </svg>
+        </button>
+          <Link href='/admin/wishlist' className="flex gap-1 items-center secondary-color cursor-pointer">
+            <IoMdHeartEmpty />
+            <p className="block max-md:hidden">Wishes</p>
+          </Link>
+          <Link href='/' className="flex max-md:hidden gap-1 items-center secondary-color cursor-pointer">
+            <IoCartOutline />
+            <p className="block max-md:hidden">Cart</p>
+          </Link>
+          <button className="px-2 md:hidden" onClick={()=>setMobileMenu(!mobileMenu)}><HiBars3 className="text-2xl"/></button>
+        </div>
+      </div>
+      <div className={`${search?"h-auto py-2":"h-0 p-0"} duration-200 ease-in-out w-full hidden max-md:flex justify-center  overflow-hidden`}>
+      <form className="w-1/2">
             <label
               htmlFor="default-search"
               className="mb-2 text-sm font-medium text-gray-900 sr-only"
@@ -456,72 +641,9 @@ function Header() {
               </button>
             </div>
           </form>
-        </div>
-        <div className="flex gap-4 items-center w-full justify-end ">
-          {isLoggedIn?
-<DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button className="flex gap-1 items-center secondary-color cursor-pointer">
-          <FaRegUser />
-            <p>Account</p>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-64 primary-bg border-2 secondary-border tertiary-color">
-        <DropdownMenuLabel>
-          <div className="flex flex-col items-center gap-1 text-center w-full">
-            <div className="quaternary-color text-lg font-medium leading-snug">Welcome to FashionStore</div>
-            <div className="text-xs">Access account & manage order</div>
-          </div>
-        </DropdownMenuLabel>
-        <DropdownMenuSeparator className='tertiary-bg opacity-50' />
-        <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <Link href='/profile'  className='flex items-center gap-1 cursor-pointer group'>
-            <FaRegUserCircle />
-            <span className="group-hover:translate-x-1 duration-200">Profile</span>
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem className='flex items-center gap-1 cursor-pointer'>
-            <Link href='/profile/'  className='flex items-center gap-1 cursor-pointer group'>
-            <IoBagCheckOutline  />
-            <span className="hover:translate-x-1 duration-200">My Orders</span>
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem className='flex items-center gap-1 cursor-pointer'>
-            <Link href='/profile/wishlist'  className='flex items-center gap-1 cursor-pointer group'>
-            <CiHeart  />
-            <span className="hover:translate-x-1 duration-200">My Wishlist</span>
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem className='flex items-center gap-1 cursor-pointer'>
-            <IoIosReturnLeft  />
-            <span className="hover:translate-x-1 duration-200">Return & refund</span>
-          </DropdownMenuItem>
-          <DropdownMenuItem className='flex items-center gap-1 cursor-pointer'>
-            <PiGearDuotone  />
-            <span className="hover:translate-x-1 duration-200">Settings</span>
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-                <DropdownMenuSeparator className='tertiary-bg opacity-50' />
-        <DropdownMenuItem className='flex items-center gap-1 cursor-pointer'>
-            <BiLogOut  />
-            <span className="hover:translate-x-1 duration-200" onClick={() => (localStorage.removeItem('token'),window.location.href = '/Login')} >Logout</span>
-          </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>:
-          <Link href='/Login' className="bg-[#DDEB9D] border border-[#A0C878] rounded-md text-[#143D60] text-center duration-200 hover:scale-105 hover:-translate-y-0.5 py-1.5 w-36 text-sm cursor-pointer">Login/Register</Link>
-          }
-          <Link href='/admin/wishlist' className="flex gap-1 items-center secondary-color cursor-pointer">
-            <IoMdHeartEmpty />
-            <p>Wishes</p>
-          </Link>
-          <Link href='/' className="flex gap-1 items-center secondary-color cursor-pointer">
-            <IoCartOutline />
-            <p>Cart</p>
-          </Link>
-        </div>
       </div>
-      <div className="flex w-full px-20 py-2 gap-8 tertiary-color ">
+
+      <div className="flex max-md:hidden w-full px-20 max-lg:px-2 max-lg:gap-4 py-2 gap-8 tertiary-color ">
         
         <Link
         
@@ -789,6 +911,7 @@ function Header() {
         </Link>
       </div>
     </nav>
+    </>
   );
 }
 

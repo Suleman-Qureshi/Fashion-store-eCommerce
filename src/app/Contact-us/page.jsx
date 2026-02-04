@@ -21,7 +21,6 @@ function Page() {
     reset,
     formState: { errors },
   } = useForm();
-
   const onSubmit = async (data) => {
     try{
       const response=await axios.post("/api/contactForm",data);
@@ -40,9 +39,9 @@ function Page() {
           <ClientMap />
         </section>
         <section className="w-screen flex justify-center">
-          <div className="w-[67rem] flex ">
-            <div className="flex flex-col w-1/3 gap-4">
-              <div className="flex gap-2 items-center">
+          <div className="w-[67rem] max-md:w-full flex max-md:flex-col max-md:gap-4">
+            <div className="flex flex-col w-1/3 max-md:w-full gap-4">
+              <div className="flex gap-2 max-md:flex-col max-md:text-center items-center">
                 <SlLocationPin className="tertiary-bg primary-color w-10 h-10 rounded-md p-2.5" />
                 <div className="flex flex-col gap-0">
                   <div className="quaternary-color font-semibold">Address</div>
@@ -51,14 +50,14 @@ function Page() {
                   </div>
                 </div>
               </div>
-              <div className="flex gap-2 items-center">
+              <div className="flex max-md:flex-col max-md:text-center gap-2 items-center">
                 <FiPhone className="tertiary-bg primary-color w-10 h-10 rounded-md p-2.5" />
                 <div className="flex flex-col gap-0">
                   <div className="quaternary-color font-semibold">Call Us</div>
                   <div className="tertiary-color text-sm">+92 3400 772889</div>
                 </div>
               </div>
-              <div className="flex gap-2 items-center">
+              <div className="flex max-md:flex-col max-md:text-center gap-2 items-center">
                 <HiOutlineEnvelope className="tertiary-bg primary-color w-10 h-10 rounded-lg p-2.5" />
                 <div className="flex flex-col gap-0">
                   <div className="quaternary-color font-semibold">Email Us</div>
@@ -70,7 +69,7 @@ function Page() {
             </div>
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="flex flex-col items-center gap-4 w-2/3"
+              className="flex flex-col items-center gap-4 w-2/3 max-md:w-full px-2"
             >
               <div className="flex gap-4 w-full">
                 <input

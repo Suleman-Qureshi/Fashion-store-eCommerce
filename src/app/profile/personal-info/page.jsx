@@ -2,76 +2,92 @@
 import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
+
 function Page() {
-    const userId = typeof window !== 'undefined' ? localStorage.getItem('userId') : null;
+  const userId =
+    typeof window !== "undefined" ? localStorage.getItem("userId") : null;
+
   const {
     register,
     handleSubmit,
     watch,
-    reset,
-     setValue   ,
+    setValue,
     formState: { errors },
-  } = useForm({ defaultValues: { gender: "male" } });
-   const [previewImage, setPreviewImage] = React.useState(null);
+  } = useForm({
+    defaultValues: { gender: "male" },
+  });
+
+  const [previewImage, setPreviewImage] = React.useState(null);
   const avatarFile = watch("avatar");
+
   const onSubmit = async (data) => {
-     const file = data.avatar?.[0];
-    const formData = new FormData();
-    if(file) formData.append("avatar", file);
-      formData.append("phoneNo", data.phoneNo);
-  formData.append("DOB", data.DOB);
-  formData.append("gender", data.gender);
-  formData.append("username", data.username);
-    console.log({...data,...file});
-    window.location.reload();
-    try{ 
-      axios.put(`/api/user/${userId}`,formData,{headers: { "Content-Type": "multipart/form-data" }})
-      alert("User Updated");
-      await axios.post("api/notification", {
-      userId,
-      message: "Your profile update successfully",
-      type: "success",
-    });
-   }catch(error){
-    console.error("Update error:",error.response?.data||error.message);
     try {
+      const file = data.avatar?.[0];
+      const formData = new FormData();
+      if (file) formData.append("avatar", file);
+      if (data.phoneNo) formData.append("phoneNo", data.phoneNo);
+      if (data.DOB) formData.append("DOB", data.DOB); // only if not empty
+      if (data.gender) formData.append("gender", data.gender);
+      // username/email are disabled, so no need to send them
+      await axios.put(`/api/user/${userId}`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
       await axios.post("/api/notification", {
         userId,
-        message: "⚠️ Failed to date profile.",
-        type: "error",
+        message: "Your profile update successfully",
+        type: "success",
       });
-    } catch (err) {
-      console.error("❌ Failed to create error-notification:", err.response?.data || err.message);
+      alert("User Updated");
+      window.location.reload(); // run AFTER successful update
+    } catch (error) {
+      console.error("Update error:", error.response?.data || error.message);
+      try {
+        await axios.post("/api/notification", {
+          userId,
+          message: "⚠️ Failed to update profile.",
+          type: "error",
+        });
+      } catch (err) {
+        console.error(
+          "❌ Failed to create error-notification:",
+          err.response?.data || err.message
+        );
+      }
     }
-   }
   };
-    const handleFileChange = (e) => {
-    const file = e.target.files[0];
-
+  const handleFileChange = (e) => {
+    const file = e.target.files?.[0];
     if (file) {
       setPreviewImage(URL.createObjectURL(file));
     }
   };
-  React.useState(async()=>{
-    try{
-    const {data} = await axios.get(`/api/user/${userId}`);
- setValue("username", data.username);
+
+  // Load user data
+  React.useEffect(() => {
+    if (!userId) return;
+
+    (async () => {
+      try {
+        const { data } = await axios.get(`/api/user/${userId}`);
+        setValue("username", data.username);
         setValue("email", data.email);
-        setValue("phoneNo", data.phoneNo);
-        setValue("DOB", data.DOB?.split("T")[0]);
-        setValue("gender", data.gender);
-    }catch(error){
-      console.log(error.message)
-    }
-  },[userId, setValue]) 
+        setValue("phoneNo", data.phoneNo || "");
+        setValue("DOB", data.DOB ? data.DOB.split("T")[0] : "");
+        setValue("gender", data.gender || "male");
+      } catch (error) {
+        console.log(error.message);
+      }
+    })();
+  }, [userId, setValue]);
+
   return (
     <section className="w-full min-h-screen flex flex-col gap-8">
-      <h2 className="text-4xl font-semibold quaternary-color">
+      <h2 className="text-4xl font-semibold quaternary-color max-md:text-wrap">
         Personal Information
       </h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full flex flex-col gap-4 p-4"
+        className="w-full flex flex-col gap-4 p-4 max-md:px-0"
       >
         <div className="flex flex-col gap-2">
           <label
@@ -88,8 +104,8 @@ function Page() {
             disabled
           />
         </div>
-        <div className="flex gap-4 items-center">
-          <div className="flex flex-col gap-2">
+        <div className="flex gap-4 max-sm:flex-col items-center max-md:w-full">
+          <div className="flex flex-col gap-2 max-md:w-full">
             <label
               htmlFor="email"
               className="quaternary-color text-sm font-medium"
@@ -104,7 +120,7 @@ function Page() {
               disabled
             />
           </div>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 max-md:w-full">
             <label
               htmlFor="phone"
               className="quaternary-color text-sm font-medium"
@@ -119,7 +135,10 @@ function Page() {
           </div>
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="DOB" className="quaternary-color text-sm font-medium">
+          <label
+            htmlFor="DOB"
+            className="quaternary-color text-sm font-medium"
+          >
             Date of Birth
           </label>
           <input
@@ -140,7 +159,6 @@ function Page() {
               <input
                 type="radio"
                 id="male"
-                name="gender"
                 value="male"
                 {...register("gender")}
                 required
@@ -151,18 +169,16 @@ function Page() {
               <input
                 type="radio"
                 id="female"
-                name="gender"
                 value="female"
                 {...register("gender")}
                 required
               />
-              <label htmlFor="male">Female</label>
+              <label htmlFor="female">Female</label>
             </div>
             <div className="flex gap-2 items-center">
               <input
                 type="radio"
                 id="other"
-                name="gender"
                 value="other"
                 {...register("gender")}
                 required
@@ -172,16 +188,36 @@ function Page() {
           </div>
         </div>
         <div className="flex flex-col gap-2">
-          <label
-            className="quaternary-color text-sm font-medium"
-          >
+          <label className="quaternary-color text-sm font-medium">
             Avatar
           </label>
-       <label htmlFor="avatar" className="w-24 h-14 quaternary-bg text-center content-center text-lg primary-color rounded-md cursor-pointer" >+</label>
-       <input type="file" accept="image/*" id="avatar" {...register("avatar")}  />
+          <label
+            htmlFor="avatar"
+            className="w-24 h-14 quaternary-bg text-center content-center text-lg primary-color rounded-md cursor-pointer"
+          >
+            +
+          </label>
+          <input
+            type="file"
+            accept="image/*"
+            id="avatar"
+            {...register("avatar")}
+            onChange={handleFileChange}
+          />
+          {previewImage && (
+            <img
+              src={previewImage}
+              alt="Preview"
+              className="mt-2 w-24 h-24 object-cover rounded-full"
+            />
+          )}
         </div>
         <div className="w-full flex justify-end">
-          <input type="submit" value='Save Changes' className="w-40 py-2 text-lg font-medium text-center content-center rounded-md quaternary-bg primary-color cursor-pointer" />
+          <input
+            type="submit"
+            value="Save Changes"
+            className="w-40 py-2 text-lg font-medium text-center content-center rounded-md quaternary-bg primary-color cursor-pointer"
+          />
         </div>
       </form>
     </section>

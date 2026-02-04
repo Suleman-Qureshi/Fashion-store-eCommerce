@@ -44,20 +44,14 @@ function Page() {
         <h2 className="text-4xl font-bold tertiary-color">Signup</h2>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="w-full flex flex-col gap-2 items-center"
-        >
+          className="w-full flex flex-col gap-2 items-center">
           <div className="flex flex-col gap-1 w-full">
             <label htmlFor="name " className="tertiary-color font-semibold">
               Username*
             </label>
             <input
-              type="text"
-              placeholder="Username"
-              name="username"
-              required
-              className="w-full p-1.5 border tertiary-border primary-bg focus:outline-[#EB5B00] tertiary-color rounded-lg"
-              {...register("username")}
-            />
+              type="text" placeholder="Username" name="username" required className="w-full p-1.5 border tertiary-border primary-bg focus:outline-[#EB5B00] tertiary-color rounded-lg"
+              {...register("username")}/>
           </div>
           <div className="flex flex-col gap-1 w-full">
             <label htmlFor="email " className="tertiary-color font-semibold">
@@ -119,10 +113,7 @@ function Page() {
                 className="w-full p-1.5 border tertiary-border primary-bg focus:outline-[#EB5B00] tertiary-color  rounded-lg"
                 {...register("confirmpassword")}
               />
-              <span
-                className="absolute right-[5%] text-2xl tertiary-color cursor-pointer"
-                onClick={() => setCPasswordHidden(!cPasswordHidden)}
-              >
+              <span className="absolute right-[5%] text-2xl tertiary-color cursor-pointer" onClick={() => setCPasswordHidden(!cPasswordHidden)}>
                 {cPasswordHidden ? <TiEye /> : <LuEyeClosed />}
               </span>
             </div>
@@ -144,5 +135,4 @@ function Page() {
     </section>
   );
 }
-
 export default Page;
