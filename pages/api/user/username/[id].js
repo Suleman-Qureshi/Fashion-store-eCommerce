@@ -1,5 +1,5 @@
-import connectDB from "../../../src/lib/db";
-import User from "../../../src/lib/models/User.js";
+import connectDB from "../../../../src/lib/db.js";
+import User from "../../../../src/lib/models/User.js";
 import multer from "multer";
 import path from "path";
 import fs from "fs";
